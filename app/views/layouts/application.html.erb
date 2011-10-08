@@ -3,7 +3,7 @@
 <head>
   <title><%= title %></title>
   <%= csrf_meta_tags %>
-  <%= render 'layouts/stylsheets' %>
+  <%= render 'layouts/stylesheets' %>
 </head>
 <body>
   <div class="container">
@@ -11,6 +11,7 @@
     <section class="round">
       <%= yield %>
     </section>
+    <%= render 'layouts/footer' %>
   </div>
 </body>
 </html>
