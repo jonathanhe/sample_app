@@ -2,31 +2,12 @@
 <html>
 <head>
   <title><%= title %></title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-
-  <!--[if lt IE 9]>
-  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-  <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen, projection' %>
-  <%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
-  <!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
-  <%= stylesheet_link_tag 'custom', :media => 'screen, projection' %>
-
   <%= csrf_meta_tags %>
+  <%= render 'layouts/stylsheets' %>
 </head>
 <body>
   <div class="container">
-    <header>
-      <%= image_tag("logo.png", :alt => "aabb sample app", :class => "round") %>
-      <nav class="round">
-        <ul>
-          <li><%= link_to "Home", '#' %></li>
-          <li><%= link_to "Help", '#' %></li>
-          <li><%= link_to "Sign in", '#' %></li>
-        </ul>
-      </nav>
-    </header>
+    <%= render 'layouts/header' %>
     <section class="round">
       <%= yield %>
     </section>
