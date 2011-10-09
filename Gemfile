@@ -15,7 +15,6 @@ gem 'therubyracer'
 # Added by jon@ on 10/4/11 to load RSpec2
 group :development do
   gem 'rspec-rails', '2.6.1'
-  gem 'annotate-models'
 end
 
 group :test do
