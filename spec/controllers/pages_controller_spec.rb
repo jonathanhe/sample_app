@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe PagesController do
-
+  # Jonathan: It is VERY important to render views here.
+  # Otherwise, some tests just won't pass.
   render_views
 
   describe "GET 'home'" do

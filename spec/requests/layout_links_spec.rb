@@ -22,5 +22,15 @@ describe "LayoutLinks" do
       get '/contact'
       response.should have_selector("title:contains('Contact')")
     end
+
+    it "should have a help page at /help" do
+      get '/help'
+      response.should have_selector("title:contains('Help')")
+    end
+
+    it "should have a sign-up page at '/signup'" do
+      get '/signup'
+      response.should have_selector("title:contains('Sign up')")
+    end
   end
 end
