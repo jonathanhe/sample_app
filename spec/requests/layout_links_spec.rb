@@ -32,5 +32,19 @@ describe "LayoutLinks" do
       get '/signup'
       response.should have_selector("title:contains('Sign up')")
     end
+
+    it "should have the right links on the layout" do
+      visit root_path
+      click_link "About"
+      response.should have_selector("title:contains('About')")
+      click_link "Help"
+      response.should have_selector("title:contains('Help')")
+      click_link "Contact"
+      response.should have_selector("title:contains('Contact')")
+      click_link "Home"
+      response.should have_selector("title:contains('Home')")
+      click_link "Sign up now!"
+      response.should have_selector("title:contains('Sign up')")
+    end
   end
 end
