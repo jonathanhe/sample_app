@@ -1,0 +1,6 @@
+# ask autotest to run integration tests automatically
+Autotest.add_hook :initialize do |autotest|
+  autotest.add_mapping(%r%^spec/(requests)/.*rb$%) do |filename, _|
+    filename
+  end
+end
