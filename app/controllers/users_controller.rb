@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
-    @title = "Your account info"
-    @user = User.find(@params[:id])
+    @user = User.find(params[:id])
+    @title = "Welcome back " + @user.name + ", your account info"
   end
 
   def new
