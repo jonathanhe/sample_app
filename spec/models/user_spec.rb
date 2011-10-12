@@ -67,5 +67,21 @@ describe User do
       User.new(@attr.merge(:password => "", :password_confirmation => "")).
         should_not be_valid
     end
+
+    it "should require a matching password confirmation" do
+      User.new(@attr.merge(:password_confirmation => "invalid")).
+        should_not be_valid
+    end
+
+    it "should reject short password" do
+      User.new(@attr.merge(:password => "fooba", :password_confirmation => "fooba")).
+        should_not be_valid
+    end
+
+    it "should reject password longer than 40 chars" do
+      long_passwd = "a" * 41
+      User.new(@attr.merge(:password => long_passwd, :password_confirmation => long_passwd)).
+        should_not be_valid
+    end
   end
 end
