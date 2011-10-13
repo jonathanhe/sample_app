@@ -19,4 +19,17 @@ class User < ActiveRecord::Base
   validates :password, :presence     => true,
                        :confirmation => true,
                        :length       => { :within => 6..40 }
+
+  # register a callback to ensure that we encrypt the password
+  # and save to the DB
+  before_save :encrypt_password
+
+  private
+    def encrypt_password
+      self.encrypted_password = encrypt(password)
+    end
+
+    def encrypt(string)
+      string # To-do: we will need to come back and fix this!
+    end
 end
