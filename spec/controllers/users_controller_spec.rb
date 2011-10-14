@@ -45,6 +45,11 @@ describe UsersController do
       get :show, :id => @user
       response.should have_selector("h1", :content => @user.name)
     end
+
+    it "should include a gravarta image tag in h1" do
+      get :show, :id => @user
+      response.should have_selector("h1>img", :class => "gravatar")
+    end
   end
 
 end

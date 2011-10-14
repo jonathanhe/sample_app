@@ -12,6 +12,9 @@ gem 'sqlite3-ruby', '1.3.3', :require => 'sqlite3'
 # Added by jon@ on 10/4/11 to load Javascript runtime
 gem 'therubyracer'
 
+# For user profile image
+gem 'gravatar_image_tag', '1.0.0'
+
 # Added by jon@ on 10/4/11 to load RSpec2
 group :development do
   gem 'rspec-rails', '2.6.1'
