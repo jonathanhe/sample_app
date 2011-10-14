@@ -21,6 +21,7 @@ group :test do
   gem 'rspec', '2.6.0'
   gem 'webrat', '0.7.3'
   gem 'spork', '0.8.5'
+  gem 'factory_girl_rails', '1.2.0'
 end
 
 # Gems used only for assets and not required
