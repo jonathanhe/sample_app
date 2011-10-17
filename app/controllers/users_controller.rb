@@ -16,6 +16,8 @@ class UsersController < ApplicationController
       # redirect to user profile page if successfully created a user
       redirect_to @user
     else
+      # Jonathan: not sure why the flash couldn't be styled properly.
+      #flash[:failure] = "Failed to create a new user!"
       # In case of failure, re-direct user back to the sign up screen
       @title = "Sign up"
       render 'new'

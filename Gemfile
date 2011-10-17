@@ -17,11 +17,11 @@ gem 'gravatar_image_tag', '1.0.0'
 
 # Added by jon@ on 10/4/11 to load RSpec2
 group :development do
-  gem 'rspec-rails', '2.6.1'
+  gem 'rspec-rails', '2.7.0'
 end
 
 group :test do
-  gem 'rspec', '2.6.0'
+  gem 'rspec', '2.7.0'
   gem 'webrat', '0.7.3'
   gem 'spork', '0.8.5'
   gem 'factory_girl_rails', '1.2.0'
