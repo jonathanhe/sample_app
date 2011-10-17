@@ -12,7 +12,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      # TO-DO: add some code to celebrate success here!
+      # redirect to user profile page if successfully created a user
+      redirect_to @user
     else
       # In case of failure, re-direct user back to the sign up screen
       @title = "Sign up"

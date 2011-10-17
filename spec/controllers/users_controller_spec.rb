@@ -55,6 +55,7 @@ describe UsersController do
   end
 
   describe "POST 'create'" do
+
     describe "failure" do
       before(:each) do
         @attr = { :name => "", :email => "", :password => "",
@@ -65,6 +66,24 @@ describe UsersController do
         lambda do
           post :create, :user => @attr
         end.should_not change(User, :count)
+      end
+    end
+
+    describe "success" do
+      before(:each) do
+        @attr = { :name => "Jonathan He", :email => "jhe@aabb.com",
+                  :password => "foobar", :password_confirmation => "foobar" }
+      end
+
+      it "should craete a valid user" do
+        lambda do
+          post :create, :user => @attr
+        end.should change(User, :count).by(1)
+      end
+
+      it "should redirect to the user show page" do
+        post :create, :user => @attr
+        response.should redirect_to(user_path(assigns(:user)))
       end
     end
   end
