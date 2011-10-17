@@ -49,6 +49,10 @@ describe SessionsController do
         post :create, :session => @attr
         controller.current_user.should == @user
         controller.should be_signed_in
+
+        # A less idionmatic way to test whether we are signed in
+        # therefore I am disabling it.
+        #controller.signed_in?.should be_true
       end
 
       it "should redirect to the user show page" do
