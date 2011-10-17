@@ -12,7 +12,9 @@ class SessionsController < ApplicationController
       @title = "Sign in"
       render('new')
     else
-      # TODO: we are signed in, should re-direct to users/show page
+      sign_in user
+      redirect_to user
+#      flash.now[:success] = "Welcome back, " . user.name
     end
   end
 
