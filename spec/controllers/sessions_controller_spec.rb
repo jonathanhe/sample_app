@@ -1,11 +1,10 @@
 require 'spec_helper'
 
 describe SessionsController do
+  # Jonathan: it is important to render views here for EVERY test case!!!
+  render_views
 
   describe "GET 'new'" do
-    # it is important to render views here
-    render_views
-
     it "should be successful" do
       get :new
       response.should be_success
@@ -18,6 +17,7 @@ describe SessionsController do
   end
 
   describe "POST 'create'" do
+
     describe "invalid sign in attempt" do
       before(:each) do
         @attr = { :email => "email@example.com", :password => "invalid" }

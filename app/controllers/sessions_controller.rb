@@ -7,8 +7,10 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:session][:email],
                              params[:session][:password])
 
-    if user.nil
-      # TODO: create an error message and re-render the signin form
+    if user.nil?
+      flash.now[:error] = "Email or password invalid, please try again."
+      @title = "Sign in"
+      render('new')
     else
       # TODO: we are signed in, should re-direct to users/show page
     end
