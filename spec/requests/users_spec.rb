@@ -34,4 +34,17 @@ describe "Users" do
       end
     end
   end
+
+  # Integration tests for Sign in and Sign out
+  describe "sign in and out" do
+    describe "failure" do
+      it "should not sign a user in" do
+        visit signin_path
+        fill_in :email,    :with => ""
+        fill_in :password, :with => "invalid"
+        click_button
+        response.should have_selector("div.flash.error", :content => "invalid")
+      end
+    end
+  end
 end
