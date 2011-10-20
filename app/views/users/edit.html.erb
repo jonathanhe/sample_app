@@ -1,15 +1,24 @@
-<table class="profile" summary="Edit user profile">
-  <tr>
-    <td class="main">
-      <h1>
-        <%= gravatar_for @user, :size => 80 %>
-        <%= @user.name %>
-      </h1>
-    </td>
-    <td class="sidebar round">
-      <strong>Name</strong> <%= @user.name %><br />
-      <strong>Email</strong> <%= @user.email %><br />
-      <strong>URL</strong>  <%= link_to user_url(@user), @user %>
-    </td>
-  </tr>
-</table>
+<h1>Edit your user profile</h1>
+
+<%= form_for(@user) do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation, "Confirmation" %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
