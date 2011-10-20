@@ -29,4 +29,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @title = "Edit my profile"
   end
+
+  def update
+    @user = User.find(params[:id])
+  end
 end
