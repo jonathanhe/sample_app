@@ -142,5 +142,12 @@ describe UsersController do
       get :edit, :id => @user
       response.should have_selector("title", :content => "profile")
     end
+
+    it "should have a link to gravatar to change picture" do
+      get :edit, :id => @user
+      gravatar_url = "http://gravatar.com/emails"
+      response.should have_selector("a", :href => gravatar_url,
+                                         :content => "update")
+    end
   end
 end
