@@ -191,7 +191,7 @@ describe UsersController do
 
       it "should redirect to the user show page" do
         put :update, :id => @user, :user => @attr
-        response.should_be redirected_to(user_path(@user))
+        response.should redirect_to(user_path(@user))
       end
 
       it "should have a flash message" do
