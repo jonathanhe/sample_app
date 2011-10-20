@@ -33,7 +33,15 @@ module SessionsHelper
       cookies.signed[:remember_token] || [nil, nil]
     end
 
+    def current_user?(user)
+      user == current_user
+    end
+
     def deny_access
       redirect_to signin_path, :notice => "Please sign in to access the page"
+    end
+
+    def deny_and_redirect_to_root
+      redirect_to root_path, :notice => "Access other user's profile is not allowed"
     end
 end

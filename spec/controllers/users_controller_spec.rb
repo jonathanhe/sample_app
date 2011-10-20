@@ -220,9 +220,23 @@ describe UsersController do
       end
     end
 
-    describe "user signed in, and try to update other people's account" do
-      it "should not be successful"
+    describe "for signed in users" do
+      before(:each) do
+        wrong_user = Factory(:user, :email => "user@example.com")
+        test_sign_in(wrong_user)
+      end
 
+      it "should require matching user for 'edit'" do
+        get :edit, :id => @user
+        response.should redirect_to(root_path)
+        flash[:notice] =~ /not allowed/i
+      end
+
+      it "should require matching user for 'update'" do
+        put :update, :id => @user, :user => {}
+        response.should redirect_to(root_path)
+        flash[:notice] =~ /not allowed/i
+      end
     end
   end
 end
