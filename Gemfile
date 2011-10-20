@@ -18,6 +18,7 @@ gem 'gravatar_image_tag', '1.0.0'
 # Added by jon@ on 10/4/11 to load RSpec2
 group :development do
   gem 'rspec-rails', '2.7.0'
+  gem 'faker', '1.0.1'
 end
 
 group :test do
