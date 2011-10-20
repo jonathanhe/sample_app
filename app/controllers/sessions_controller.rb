@@ -13,8 +13,9 @@ class SessionsController < ApplicationController
       render 'new'
     else
       sign_in user
-      redirect_to user
-#      flash.now[:success] = "Welcome back, " . user.name
+      redirect_back_or user
+      #redirect_to user
+      #flash.now[:success] = "Welcome back, " . user.name
     end
   end
 
