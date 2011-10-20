@@ -32,4 +32,8 @@ module SessionsHelper
       # since support of signed cookies in Rails is not mature?
       cookies.signed[:remember_token] || [nil, nil]
     end
+
+    def deny_access
+      redirect_to signin_path, :notice => "Please sign in to access the page"
+    end
 end
