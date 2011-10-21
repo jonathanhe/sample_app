@@ -15,6 +15,8 @@ gem 'therubyracer'
 # For user profile image
 gem 'gravatar_image_tag', '1.0.0'
 
+gem 'will_paginate', '3.0.2'
+
 # Added by jon@ on 10/4/11 to load RSpec2
 group :development do
   gem 'rspec-rails', '2.7.0'
