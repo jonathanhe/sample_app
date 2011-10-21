@@ -326,8 +326,9 @@ describe UsersController do
 
       it "should redirect to the show all users page" do
         lambda do
+          visit users_path
           delete :destroy, :id => @user
-        end.should render_template('/users')
+        end.should redirect_to(users_path)
       end
     end
   end

@@ -55,11 +55,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id]).destroy
-    flash[:success] = "User " + @user.email + " was deleted"
-    # here we redirect to the show all users page
-    # TODO: might consider change this.
-    redirect_to users_path
+    User.find(params[:id]).destroy
+    flash[:success] = "User deleted!"
+    redirect_to(users_path)
   end
 
   private
@@ -74,6 +72,6 @@ class UsersController < ApplicationController
     end
 
     def admin_user
-      deny_and_redirect_to_root unless current_user.admin?
+      redirect_to(root_path) unless current_user.admin?
     end
 end
