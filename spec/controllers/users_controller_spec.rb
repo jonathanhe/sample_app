@@ -305,6 +305,12 @@ describe UsersController do
 
     describe "for non-admin users, but signed in" do
 
+      it "should not see the remove link" do
+        get :index
+        response.should_not have_selector("a", :href => "/users/1",
+                                               :content => "remove")
+      end
+
       it "should not destroy the user" do
         test_sign_in(@user)
         delete :destroy, :id => @user
