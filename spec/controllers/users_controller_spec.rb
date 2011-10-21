@@ -319,7 +319,7 @@ describe UsersController do
       end
 
       it "should see the delete link" do
-        visit users_path
+        get :index
         response.should have_selector("a", :href => "/users/1",
                                            :content => "remove")
       end
