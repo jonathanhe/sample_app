@@ -9,3 +9,10 @@ end
 Factory.sequence :email do |n|
   "user-#{n}@example.com"
 end
+
+# By user the symbol ':micropost', the Factory Girl will simulate the
+# Micropost model
+Factory.define :micropost do |micropost|
+  micropost.content     "Sample post content"
+  micropost.association :user
+end

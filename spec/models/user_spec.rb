@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe User do
-  #pending "add some examples to (or delete) #{__FILE__}"
-
   before(:each) do
     @attr = { 
       :name => "Example user",
@@ -144,6 +142,30 @@ describe User do
     it "should be able to be converted to an admin" do
       @user.toggle!(:admin)
       @user.should be_admin
+    end
+  end
+
+  describe "association with microposts" do
+
+    before(:each) do
+      @user = User.create!(@attr)
+      @older_post = Factory(:micropost, :user => @user, :created_at => 1.day.ago)
+      @newer_post = Factory(:micropost, :user => @user, :created_at => 1.hour.ago)
+    end
+
+    it "should respond to micropost" do
+      @user.should respond_to(:microposts)
+    end
+
+    it "should return micropost in the right order (reverse by time)" do
+      @user.microposts.should == [@newer_post, @older_post]
+    end
+
+    it "should destroy all posts by the user when the user is deleted" do
+      @user.destroy
+      [@older_post, @newer_post].each do |p|
+        Micropost.find_by_id(p.id).should be_nil
+      end
     end
   end
 end
