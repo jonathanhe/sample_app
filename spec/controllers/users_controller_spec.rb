@@ -318,6 +318,12 @@ describe UsersController do
         test_sign_in(admin)
       end
 
+      it "should see the delete link" do
+        visit users_path
+        response.should have_selector("a", :href => "/users/1",
+                                           :content => "remove")
+      end
+
       it "should destroy the user" do
         lambda do
           delete :destroy, :id => @user
