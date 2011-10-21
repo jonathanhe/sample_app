@@ -70,4 +70,9 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       deny_and_redirect_to_root unless current_user?(@user)
     end
+
+    def admin_user
+      @user = User.find(params[:id])
+      deny_and_redirect_to_root unless @user.admin?
+    end
 end

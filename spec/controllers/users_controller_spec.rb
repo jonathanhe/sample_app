@@ -311,5 +311,20 @@ describe UsersController do
         @user.should_not be_destroyed
       end
     end
+
+    describe "for admin users, signed in" do
+      before(:each) do
+        admin = Factory(:user, :email => 'admin@aabb.com', :admin => true)
+        test_sign_in(admin)
+      end
+
+      it "should destroy the user" do
+        lambda do
+          delete :destroy, :id => @user
+        end.should change(User, :count).by(-1)
+      end
+
+      it "should redirect to the users page"
+    end
   end
 end
