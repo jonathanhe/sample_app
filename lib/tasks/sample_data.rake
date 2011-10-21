@@ -9,7 +9,7 @@ namespace :db do
                  :password => "foobar",
                  :password_confirmation => "foobar")
     99.times do |n|
-      name = Fake::Name.name
+      name = Faker::Name.name
       email = "example-#{n+1}@example.com"
       password = "password"
       User.create!(:name => name,
