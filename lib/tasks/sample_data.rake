@@ -6,7 +6,7 @@ namespace :db do
     Rake::Task['db:reset'].invoke
     # we grant the admin priviledge to the first user.
     admin = User.create!(:name => "Admin User",
-                 :email => "admin@example.com",
+                 :email => "admin@aabb.com",
                  :password => "foobar",
                  :password_confirmation => "foobar")
     admin.toggle!(:admin)
