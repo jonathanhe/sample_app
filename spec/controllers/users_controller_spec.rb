@@ -324,7 +324,11 @@ describe UsersController do
         end.should change(User, :count).by(-1)
       end
 
-      it "should redirect to the users page"
+      it "should redirect to the show all users page" do
+        lambda do
+          delete :destroy, :id => @user
+        end.should render_template('/users')
+      end
     end
   end
 end

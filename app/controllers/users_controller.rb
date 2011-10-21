@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :authenticate, :only => [:index, :edit, :update, :destroy]
   before_filter :correct_user, :only => [:edit, :update]
-  before_filter :admin_user,   :only => [:destroy]
+  before_filter :admin_user,   :only => :destroy
 
   def show
     @user = User.find(params[:id])
@@ -55,9 +55,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
-    @title = "Delete the user"
-    # TODO: need code here to delete the user from the DB
+    @user = User.find(params[:id]).destroy
+    flash[:success] = "User " + @user.email + " was deleted"
+    # here we redirect to the show all users page
+    # TODO: might consider change this.
+    redirect_to users_path
   end
 
   private
@@ -72,7 +74,6 @@ class UsersController < ApplicationController
     end
 
     def admin_user
-      @user = User.find(params[:id])
-      deny_and_redirect_to_root unless @user.admin?
+      deny_and_redirect_to_root unless current_user.admin?
     end
 end
