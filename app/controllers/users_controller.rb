@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :only => [:index, :edit, :update]
+  before_filter :authenticate, :only => [:index, :edit, :update, :destroy]
   before_filter :correct_user, :only => [:edit, :update]
+  before_filter :admin_user,   :only => [:destroy]
 
   def show
     @user = User.find(params[:id])
@@ -51,6 +52,12 @@ class UsersController < ApplicationController
   def index
     @title = "Show all users"
     @users = User.paginate(:page => params[:page])
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @title = "Delete the user"
+    # TODO: need code here to delete the user from the DB
   end
 
   private

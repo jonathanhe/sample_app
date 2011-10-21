@@ -290,4 +290,26 @@ describe UsersController do
       end
     end
   end
+
+  describe "DELETE 'destroy'" do
+    before(:each) do
+      @user = Factory(:user)
+    end
+
+    describe "for non-signed-in users" do
+      it "should require the user to sign in" do
+        delete :destroy, :id => @user
+        response.should redirect_to signin_path
+      end
+    end
+
+    describe "for non-admin users, but signed in" do
+
+      it "should not destroy the user" do
+        test_sign_in(@user)
+        delete :destroy, :id => @user
+        @user.should_not be_destroyed
+      end
+    end
+  end
 end
