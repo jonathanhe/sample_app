@@ -201,7 +201,7 @@ table.microposts {
 }
 
 table.microposts tr {
-  height: 70px;
+  height: 60px;
 }
 
 table.microposts tr td.gravatar {
@@ -218,6 +218,10 @@ table.microposts tr td.micropost {
 
 table.microposts tr td.micropost span.timestamp {
   display: block;
-  font-size: 80%;
+  font-size: 70%;
   color: #666;
+}
+
+div.user_info img {
+  padding-right: 0.1em;
 }
