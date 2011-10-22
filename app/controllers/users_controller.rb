@@ -63,10 +63,6 @@ class UsersController < ApplicationController
 
   private
 
-    def authenticate
-      deny_access unless signed_in?
-    end
-
     def correct_user
       @user = User.find(params[:id])
       deny_and_redirect_to_root unless current_user?(@user)
