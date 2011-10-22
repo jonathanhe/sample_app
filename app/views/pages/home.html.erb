@@ -1,4 +1,15 @@
-<h1>aabb</h1>
-<p>This is the Home page for aabb!</p>
+<% if signed_in? %>
+  <table class="front" summary="only for signed-in users">
+    <tr>
+      <td class="main">
+        <h1 class="micropost">Tell us what you are up to:</h1>
+        <%= render 'shared/micropost_form' %>
+      </td>
+    </tr>
+  </table>
+<% else %>
+  <h1>aabb</h1>
+  <p>This is the Home page for aabb!</p>
 
-<%= link_to "Sign up now!", signup_path, :class => 'signup_button round' %>
+  <%= link_to "Sign up now!", signup_path, :class => 'signup_button round' %>
+<% end %>
