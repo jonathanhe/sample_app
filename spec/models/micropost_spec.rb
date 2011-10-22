@@ -25,4 +25,22 @@ describe Micropost do
       @micropost.user.should == @user
     end
   end
+
+  describe "validations" do
+    before(:each) do
+      @attr = { :content => "Sample content" }
+    end
+
+    it "should require a user_id" do
+      Micropost.new(@attr).should_not be_valid
+    end
+
+    it "should require a valid content" do
+      @user.microposts.build(:content => " ").should_not be_valid
+    end
+
+    it "should reject content long content" do
+      @user.microposts.build(:content => "a"*141).should_not be_valid
+    end
+  end
 end
