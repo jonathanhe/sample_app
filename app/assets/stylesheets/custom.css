@@ -213,13 +213,18 @@ table.microposts tr td.gravatar {
 table.microposts tr td.micropost {
   border-top: 1px solid #ccc;
   vertical-align: top;
-  width: 10px;
+  padding-top: 6px;
 }
 
 table.microposts tr td.micropost span.timestamp {
   display: block;
   font-size: 70%;
   color: #666;
+}
+
+/* TODO: this doesn't seem to be effective. Check why? */
+table.microposts tr td.micropost span.delete {
+  padding-top: 10px;
 }
 
 div.user_info img {
