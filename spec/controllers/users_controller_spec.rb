@@ -87,6 +87,25 @@ describe UsersController do
       response.should have_selector("span.content", :content => mp1.content)
       response.should have_selector("span.content", :content => mp2.content)
     end
+
+    it "should include delete link to the user's own post" do
+      test_sign_in(@user)
+      mp1 = Factory(:micropost, :user => @user, :content => "Sample post")
+      get :show, :id => @user
+      response.should have_selector("a", :href => "/microposts/1",
+                                         :content => "delete")
+    end
+
+    it "should not show delete link not created by the current user" do
+      sample_content = "sample post by user"
+      wrong_user = Factory(:user, :email => Factory.next(:email))
+      mp1 = Factory(:micropost, :user => wrong_user, :content => sample_content)
+      test_sign_in(@user)
+      get :show, :id => wrong_user
+      response.should have_selector("span.content", :content => sample_content)
+      response.should_not have_selector("a", :href => "/microposts/1",
+                                             :content => "delete")
+    end
   end
 
   describe "POST 'create'" do
