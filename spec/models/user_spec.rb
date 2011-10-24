@@ -211,8 +211,17 @@ describe User do
     end
 
     it "should follow a user" do
-      @user.follow!(followed)
-      @user.should be_following(followed)
+      @user.follow!(@followed)
+      @user.should be_following(@followed)
+    end
+
+    it "should include the followed user in the following array" do
+      @user.follow!(@followed)
+      @user.following.should include(@followed)
+    end
+
+    it "should not follow herself" do
+      @user.follow!(@user).should be_nil
     end
   end
 end

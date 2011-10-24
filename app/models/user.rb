@@ -53,6 +53,14 @@ class User < ActiveRecord::Base
     Micropost.where("user_id = ?", id)
   end
 
+  def following?(followed)
+    relationships.find_by_followed_id(followed)
+  end
+
+  def follow!(followed)
+    relationships.create!(:followed_id => followed.id) if id != followed.id
+  end
+
   private
 
     def encrypt_password

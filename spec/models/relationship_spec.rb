@@ -49,8 +49,7 @@ describe Relationship do
     end
 
     it "should not follow herself" do
-      @wrong_rel = @follower.relationships.build(:followed_id => @follower.id)
-      @wrong_rel.should_not be_valid
+      @follower.follow!(@follower).should be_nil
     end
 
   end
