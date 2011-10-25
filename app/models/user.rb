@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   has_many :following, :through => :relationships, :source => :followed
 
   has_many :followers, :through => :reverse_relationships,
-                      :source => :follower
+                       :source => :follower
 
   # validate email address
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
