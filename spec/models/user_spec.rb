@@ -223,5 +223,15 @@ describe User do
     it "should not follow herself" do
       @user.follow!(@user).should be_nil
     end
+
+    it "should have an unfollow! method" do
+      @user.should respond_to(:unfollow!)
+    end
+
+    it "should be able to unfollow a user" do
+      @user.follow!(@followed)
+      @user.unfollow!(@followed)
+      @user.should_not be_following(@followed)
+    end
   end
 end
